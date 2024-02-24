@@ -150,7 +150,24 @@
                 
             <h4>BasicSword (no spaces):创建默认武器的名字(不带空格)</p>
         </div>
+        <div id="gitalk-container"></div>
     </main>
+    <script src="/gitalk.js">
+        // 在页面加载完毕后初始化 Gitalk
+        document.addEventListener('DOMContentLoaded', function() {
+        var gitalk = new Gitalk({
+            clientID: 'd03a4e53950eab2aa611',
+            clientSecret: '30c998f32d98a344c5f0ba427fe90deee653993d',
+            repo: 'https://github.com/qifad/qifad.github.io/discussions/1',
+            owner: 'qifad',
+            admin: ['qifad'],
+            id: location.pathname,      // 页面的唯一标识
+            distractionFreeMode: false  // 弹幕模式
+        });
+        gitalk.render('gitalk-container');
+        });
+
+    </script>
     <script>
     const codeBlocks = document.querySelectorAll('.code-block');
     codeBlocks.forEach(block => {
