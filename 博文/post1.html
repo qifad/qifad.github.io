@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一篇博文</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4a69bd;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            border-radius: 5px 5px 0 0; /* 圆角只在顶部 */
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            background-color: #3b5998;
+            padding: 10px;
+            width: 98.95%; /* 导航栏宽度填满整个页面 */
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #5b7fd1;
+            color: white;
+        }
+        main {
+            padding: 20px;
+        }
+        .post-content {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .post-content h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .post-content p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        .code-block {
+            position: relative; /* 设置相对定位，以便绝对定位的子元素可以相对于它定位 */
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .code-block:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .code-block code {
+            color: #333;
+            background-color: transparent;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            padding: 2px 4px;
+            border-radius: 3px;
+            display: block;
+            white-space: pre;
+        }
+
+        .code-block .code-language {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #f1f1f1; /* 浅灰色背景 */
+            padding: 4px 8px;
+            border-radius: 3px;
+            color: #333; /* 文字颜色 */
+            font-size: 12px;
+            pointer-events: none; /* 防止文本遮挡鼠标事件 */
+            transition: all 0.3s ease; /* 过渡效果 */
+        }
+
+        .code-block .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 40px;
+            background-color: #4a69bd; /* 深蓝色背景 */
+            color: white; /* 白色文字 */
+            border: none; /* 移除边框 */
+            padding: 4px 8px;
+            border-radius: 3px; /* 圆角边框 */
+            cursor: pointer; /* 设置鼠标悬停时的光标样式 */
+            transition: background-color 0.3s ease; /* 过渡效果 */
+        }
+
+        .code-block .copy-btn:hover {
+            background-color: #5b7fd1; /* 鼠标悬停时的背景颜色变化 */
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>我的博客</h1>
+    </header>
+    <nav>
+        <a href="/index.html">首页</a>
+        <a href="/about.html">关于我</a>
+        <a href="/contact.html">联系我</a>
+    </nav>
+    <main>
+        <div class="post-content">
+            <h2>如何创建自定义物品和合成配方 - 泰拉瑞亚 Mod 制作教程</h2>
+            <p>在这个教程中，我们将介绍如何使用 Tmodloader 创建自定义物品和合成配方。</p>
+            <div class="code-block csharp">
+                <pre><code>using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace TestMod.Items
+{
+ public class A : ModItem
+ {
+ // 设置默认值和添加合成配方的代码将在后续步骤中进行解释
+ }
+}
+</code></pre>
+                <div class="code-type">C#</div>
+                <button class="copy-btn" data-clipboard-target="#code-copy">复制代码</button>
+            </div>
+            <p>在 `SetDefaults` 方法中，你可以设置物品的各种属性，例如伤害、尺寸、使用时间等。</p>
+            <div class="code-block cpp">
+                <pre><code>// 设置物品属性
+public override void SetDefaults()
+{
+    Item.damage = 50; // 物品伤害
+    Item.DamageType = DamageClass.Melee; // 伤害类型
+    Item.width = 40; // 物品宽度
+    Item.height = 40; // 物品高度
+    Item.useTime = 20; // 物品使用时间
+    Item.useAnimation = 20; // 物品使用动画时间
+    Item.useStyle = 1; // 物品的使用方式
+    Item.knockBack = 6; // 物品的击退
+    Item.value = 10000; // 物品的价值
+    Item.rare = 2; // 稀有度
+    Item.UseSound = SoundID.Item1; // 使用物品的音效
+    Item.autoReuse = true; // 是否可以自动使用（可以一直安装左键使用）
+}
+</code></pre>
+                <div class="code-type">C#</div>
+                <button class="copy-btn" data-clipboard-target="#code-copy">复制代码</button>
+            </div>
+            <p>在 `AddRecipes` 方法中，你可以添加物品的合成配方。</p>
+            <div class="code-block csharp">
+                <pre><code>// 添加合成配方
+public override void AddRecipes()
+{
+    Recipe recipe = CreateRecipe();
+    recipe.AddIngredient(ItemID.DirtBlock, 10); // 添加配方原料
+    recipe.AddTile(TileID.WorkBenches); // 添加合成台
+    recipe.Register(); // 注册配方
+}
+</code></pre>
+                <div class="code-type">C#</div>
+                <button class="copy-btn" data-clipboard-target="#code-copy">复制代码</button>
+            </div>
+            <hr>
+            <p>请留下你的评论或反馈：</p>
+            <!-- 嵌入GitHub讨论 -->
+            <iframe src="https://github.com/qifad/qifad.github.io/discussions/1" width="100%" height="400px" frameborder="0"></iframe>
+        
+        </div>
+        <div id="gitalk-container"></div> 
+    </main>
+    <script>
+    var gitalk = new Gitalk({   
+        clientID: 'd03a4e53950eab2aa611',   
+        clientSecret: '30c998f32d98a344c5f0ba427fe90deee653993d',   
+        repo: 'qifad.github.io',   
+        owner: 'qifad',   
+        admin: ['qifad'],   
+        id: location.pathname,      // 请确保你的 location 连接小于 50 个字符，否则，插件会生成失败   
+        distractionFreeMode: false // 专注模式 
+    })  
+
+    gitalk.render('gitalk-container')
+
+    // 监听鼠标悬停事件并显示代码类型
+    const codeBlocks = document.querySelectorAll('.code-block');
+    codeBlocks.forEach(block => {
+            block.addEventListener('mouseover', function() {
+                this.querySelector('.code-type').style.display = 'block';
+            });
+            block.addEventListener('mouseout', function() {
+                this.querySelector('.code-type').style.display = 'none';
+            });
+        });
+    // 获取所有复制按钮
+    const copyBtns = document.querySelectorAll('.copy-btn');
+        // 给每个按钮添加点击事件监听器
+        copyBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // 获取代码元素并复制其内容到剪贴板
+                const codeElement = this.previousElementSibling.previousElementSibling;
+                const selection = window.getSelection();
+                const range = document.createRange();
+                range.selectNodeContents(codeElement);
+                selection.removeAllRanges();
+                selection.addRange(range);
+                document.execCommand('copy');
+                selection.removeRange(range);
+                alert('代码已复制到剪贴板');
+            });
+        });
+    </script>
+</body>
+</html>

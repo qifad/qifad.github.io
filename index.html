@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4a69bd;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            border-radius: 5px 5px 0 0; /* 圆角只在顶部 */
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            background-color: #3b5998;
+            padding: 10px;
+            width: 98.95%; /* 导航栏宽度填满整个页面 */
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #5b7fd1;
+            color: white;
+        }
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .post-link {
+            text-align: center;
+            width: 30%;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .post-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            background-color: #e8e8e8;
+        }
+        .post-link h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .post-link p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>我的博客</h1>
+    </header>
+    <nav>
+        <a href="./index.html">首页</a>
+        <a href="./about.html">关于我</a>
+        <a href="./contact.html">联系我</a>
+    </nav>
+    <main>
+        <a href="博文/post1.html" class="post-link">
+            <h2>如何创建自定义物品和合成配方 - 泰拉瑞亚 Mod 制作教程</h2>
+            <p>在这个教程中，我们将介绍如何使用 Tmodloader 创建自定义物品和合成配方。</p>
+        </a>
+        <a href="post2.html" class="post-link">
+            <h2>第二篇博文</h2>
+            <p>这是我的第二篇博文的简介，点击查看全文。</p>
+        </a>
+        <a href="post3.html" class="post-link">
+            <h2>第三篇博文</h2>
+            <p>这是我的第三篇博文的简介，点击查看全文。</p>
+        </a>
+    </main>
+</body>
+</html>
