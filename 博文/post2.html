@@ -122,33 +122,60 @@
     </nav>
     <main>
         <div class="post-content">
-            <h2>如何安装 Visual Studio 2022 和 .NET 6.0</h2>
+            <h2>如何创建自定义物品和合成配方 - 泰拉瑞亚 Mod 制作教程</h2>
+            <p>在这个教程中，我们将介绍如何使用 Tmodloader 创建自定义物品和合成配方。</p>
+            <div class="code-block csharp">
+                <pre><code>using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
-            <p>在这个教程中，我们将介绍如何安装 Visual Studio 2022 和 .NET 6.0 开发环境。</p>
-                
-            <h3>步骤 1: 下载 Visual Studio 2022</h3>
-                
-            <p>访问 Visual Studio 官方网站(https://visualstudio.microsoft.com/zh-hans/)，下载 Visual Studio 2022 的安装程序。</p>
-                
-            <h3>步骤 2: 运行安装程序</h3>
-                
-            <p>运行下载的安装程序，按照提示进行安装。在安装过程中，要选择.NET桌面开发</p>
-                
-            <h3>步骤 3: 安装 .NET 6.0 SDK</h3>
-                
-            <p>访问 .NET 官方网站(https://dotnet.microsoft.com/zh-cn/download/dotnet/6.0)，下载并安装 .NET 6.0 SDK。安装完成后，你就可以在游戏中的</p>
-                
-            <p>创意工坊 -> 创建模组里面开始创建模组了</p>
-                
-            <p>以下是创建模组的界面翻译:</p>
-            
-            <h4>ModName (no spaces):模组名字(不带空格)</h4>
-                
-            <h4>Mod DisplayName:模组的显示名字</h4>
-                
-            <h4>Mod Author:模组作者</h4>
-                
-            <h4>BasicSword (no spaces):创建默认武器的名字(不带空格)</p>
+namespace TestMod.Items
+{
+ public class A : ModItem
+ {
+ // 设置默认值和添加合成配方的代码将在后续步骤中进行解释
+ }
+}
+</code></pre>
+                <div class="code-type">C#</div>
+                <button class="copy-btn" data-clipboard-target="#code-copy">复制代码</button>
+            </div>
+            <p>在 `SetDefaults` 方法中，你可以设置物品的各种属性，例如伤害、尺寸、使用时间等。</p>
+            <div class="code-block cpp">
+                <pre><code>// 设置物品属性
+public override void SetDefaults()
+{
+    Item.damage = 50; // 物品伤害
+    Item.DamageType = DamageClass.Melee; // 伤害类型
+    Item.width = 40; // 物品宽度
+    Item.height = 40; // 物品高度
+    Item.useTime = 20; // 物品使用时间
+    Item.useAnimation = 20; // 物品使用动画时间
+    Item.useStyle = 1; // 物品的使用方式
+    Item.knockBack = 6; // 物品的击退
+    Item.value = 10000; // 物品的价值
+    Item.rare = 2; // 稀有度
+    Item.UseSound = SoundID.Item1; // 使用物品的音效
+    Item.autoReuse = true; // 是否可以自动使用（可以一直安装左键使用）
+}
+</code></pre>
+                <div class="code-type">C#</div>
+                <button class="copy-btn" data-clipboard-target="#code-copy">复制代码</button>
+            </div>
+            <p>在 `AddRecipes` 方法中，你可以添加物品的合成配方。</p>
+            <div class="code-block csharp">
+                <pre><code>// 添加合成配方
+public override void AddRecipes()
+{
+    Recipe recipe = CreateRecipe();
+    recipe.AddIngredient(ItemID.DirtBlock, 10); // 添加配方原料
+    recipe.AddTile(TileID.WorkBenches); // 添加合成台
+    recipe.Register(); // 注册配方
+}
+</code></pre>
+                <div class="code-type">C#</div>
+                <button class="copy-btn" data-clipboard-target="#code-copy">复制代码</button>
+            </div>
         </div>
     </main>
     <script>

@@ -65,10 +65,44 @@
             margin-bottom: 20px;
             color: #666;
         }
+        .page-footing {
+            background-color: #506499; /* 保持原有的深蓝色背景 */
+            padding: 40px;
+            text-align: center;
+            animation: colorChange 5s infinite alternate;
+            color: colorChange 5s infinite alternate;
+            border-radius: 0 0 5px 5px; /* 圆角只在底部 */
+            /* 添加渐变色背景 */
+            background: linear-gradient(to bottom, #506499, #3b5998);
+            /* 添加阴影 */
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+            /* 使用更现代的字体 */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* 调整文字大小和行高 */
+            font-size: 1rem; /* 16px */
+            line-height: 1.6;
+        }
+        /* 为了美观，可以添加一些额外的样式，如边距、圆角等 */
+        .page-footing::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 1px;
+            background-color: #ddd; /* 浅灰色线条 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0            , 0.1); /* 添加阴影 */
+        }
+        /* 定义颜色变化的关键帧动画 */
+        @keyframes colorChange {
+            0% { color: rgb(148, 86, 86); }
+            25% { color: rgb(115, 190, 115); }
+            50% { color: rgb(108, 108, 199); }
+            75% { color: rgb(212, 212, 69); }
+            100% { color: rgb(189, 55, 189); }
+        }
     </style>
 </head>
-<body>
-
     <header>
         <h1>我的博客</h1>
     </header>
@@ -79,17 +113,23 @@
     </nav>
     <main>
         <a href="博文/post1.html" class="post-link">
-            <h2>如何创建自定义物品和合成配方 - 泰拉瑞亚 Mod 制作教程</h2>
-            <p>在这个教程中，我们将介绍如何使用 Tmodloader 创建自定义物品和合成配方。</p>
+            <h2>如何安装 Visual Studio 2022 和 .NET 6.0</h2>
+            <p>在这个教程中，我们将介绍如何安装 Visual Studio 2022 和 .NET 6.0 开发环境。</p>
         </a>
-        <a href="post2.html" class="post-link">
-            <h2>第二篇博文</h2>
-            <p>这是我的第二篇博文的简介，点击查看全文。</p>
+        <a href="博文/post2.html" class="post-link">
+            <h2>如何创建自定义物品和合成配方</h2>
+            <p>在这个教程中，我们将介绍如何使用 Tmodloader 创建自定义物品和合成配方。</p>
         </a>
         <a href="post3.html" class="post-link">
             <h2>第三篇博文</h2>
             <p>这是我的第三篇博文的简介，点击查看全文。</p>
         </a>
     </main>
+    <h2 class="page-footing">
+        这里就是底了
+        <br>
+        本网页由和小善赞助喵
+    </h2>
+    
 </body>
 </html>
