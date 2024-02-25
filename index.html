@@ -65,6 +65,23 @@
             margin-bottom: 20px;
             color: #666;
         }
+        /* 伪3D效果的图片样式 */
+        .bilibili {
+            position: relative; /* 确保子元素的绝对定位是基于这个元素 */
+            perspective: 1000px; /* 设置透视效果，增加3D感 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* 添加过渡效果 */
+        }
+
+        .bilibili img {
+            border-radius: 10px; /* 圆角效果 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 添加阴影 */
+            transition: transform 0.3s ease; /* 添加过渡效果 */
+        }
+
+        .bilibili:hover img {
+            transform: translateY(-5px) rotateX(10deg); /* 鼠标悬停时，图片向上移动并倾斜 */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* 增加阴影深度 */
+        }
         .page-footing {
             background-color: #506499; /* 保持原有的深蓝色背景 */
             padding: 40px;
@@ -129,7 +146,10 @@
         这里就是底了
         <br>
         本网页由和小善赞助喵
+        <br><br>
+        <a href="https://space.bilibili.com/1297035102?spm_id_from=333.1007.0.0" class="bilibili" target="_blank">
+        <img src="Icon/bilibili.svg"/>
+        </a>
     </h2>
-    
 </body>
 </html>
