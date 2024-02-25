@@ -110,6 +110,7 @@
         }
 
     </style>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 </head>
 <body>
     <header>
@@ -150,35 +151,20 @@
                 
             <h4>BasicSword (no spaces):创建默认武器的名字(不带空格)</p>
         </div>
-        
+        <div id="gitalk-container"></div>
     </main>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
     <script>
-    const codeBlocks = document.querySelectorAll('.code-block');
-    codeBlocks.forEach(block => {
-            block.addEventListener('mouseover', function() {
-                this.querySelector('.code-type').style.display = 'block';
-            });
-            block.addEventListener('mouseout', function() {
-                this.querySelector('.code-type').style.display = 'none';
-            });
+        var gitalk = new Gitalk({
+            id: 'post1', // 通常是页面的 URL 或者其他可以标识页面的字符串
+            clientID: 'd03a4e53950eab2aa611',
+            clientSecret: '30c998f32d98a344c5f0ba427fe90deee653993d',
+            repo: 'qifad.github.io',
+            owner: 'qifad',
+            admin: ['qifad'], // 仓库的管理员账号
+            // 其他配置项...
         });
-    // 获取所有复制按钮
-    const copyBtns = document.querySelectorAll('.copy-btn');
-        // 给每个按钮添加点击事件监听器
-        copyBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                // 获取代码元素并复制其内容到剪贴板
-                const codeElement = this.previousElementSibling.previousElementSibling;
-                const selection = window.getSelection();
-                const range = document.createRange();
-                range.selectNodeContents(codeElement);
-                selection.removeAllRanges();
-                selection.addRange(range);
-                document.execCommand('copy');
-                selection.removeRange(range);
-                alert('代码已复制到剪贴板');
-            });
-        });
+        gitalk.render('gitalk-container');
     </script>
 </body>
 </html>
