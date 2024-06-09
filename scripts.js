@@ -22,29 +22,38 @@ document.addEventListener('DOMContentLoaded', () => {
             selection.removeAllRanges();
         });
     });
-    // 加载指定页面的标题和部分内容
-    function loadContent(page) {
-        fetch(`/Page/${page}.html`)
-            .then(response => response.text())
-            .then(data => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(data, 'text/html');
-                const title = doc.querySelector('h2').textContent;
-                const snippet = doc.querySelector('p').textContent.substring(0, 100) + '...';
-
-                contentCard.innerHTML = `
-                    <h2>${title}</h2>
-                    <p>${snippet}</p>
-                `;
-            });
-    }
     // 点击卡片跳转到指定页面
     contentCard.addEventListener('click', () => {
         const page = contentCard.getAttribute('Page');
         window.location.href = '/Page/' + `${page}.html`;
     });
+});
+document.addEventListener("DOMContentLoaded", () => {
+    const copyButtons = document.querySelectorAll(".copy-button");
 
-    // 默认加载 Lit 页面内容
-    loadContent('Lit');
+    copyButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const codeBlock = button.previousElementSibling.innerText;
+            navigator.clipboard.writeText(codeBlock).then(() => {
+                const originalText = button.innerText;
+                button.innerText = "已复制";
+                button.classList.add("transition");
+
+                // 添加烟花效果
+                const firework = document.createElement("div");
+                firework.classList.add("firework");
+                button.appendChild(firework);
+
+                // 3秒后恢复按钮文本和移除烟花效果
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove("transition");
+                    button.removeChild(firework);
+                }, 3000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        });
+    });
 });
 

@@ -84,6 +84,7 @@ main {
     background: #282c34;
     color: #abb2bf;
     padding: 1rem;
+    position: relative;
     overflow: auto;
 }
 
@@ -123,6 +124,20 @@ main {
     border: none;
     cursor: pointer;
     color: #282c34;
+    transition: box-shadow 0.3s ease, transform 0.1s ease, color 0.3s ease, background 0.3s ease;
+}
+
+.copy-button:hover {
+    box-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
+}
+
+.copy-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 5px rgba(97, 218, 251, 0.5);
+}
+
+.copy-button.transition {
+    transition: transform 0.5s ease, box-shadow 0.5s ease, color 0.5s ease, background 0.5s ease;
 }
 
 footer {
@@ -167,4 +182,30 @@ button:focus {
     font-size: 16px;
     color: #666666;
     line-height: 1.5;
+}
+
+/* 烟花效果 */
+@keyframes firework {
+    0% {
+        opacity: 1;
+        transform: scale(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+
+.firework {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: rgba(97, 218, 251, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    animation: firework 0.5s linear forwards;
 }
