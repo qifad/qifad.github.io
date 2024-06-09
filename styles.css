@@ -44,10 +44,43 @@ main {
     padding: 1rem;
     margin-bottom: 1rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    cursor: pointer;
 }
 
+.full-content {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 80%;
+    height: 80%;
+    background: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.full-content.active {
+    display: block;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #f44336;
+    border: none;
+    color: #fff;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+/* 代码块样式 */
 .code-block {
-    position: relative;
     background: #282c34;
     color: #abb2bf;
     padding: 1rem;
@@ -101,4 +134,37 @@ footer {
 
 button {
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+button:focus {
+    outline: none;
+}
+
+#content-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease;
+    transition: all 0.5s;
+}
+
+#content-card:hover {
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+#content-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333333;
+}
+
+#content-card p {
+    font-size: 16px;
+    color: #666666;
+    line-height: 1.5;
 }
