@@ -39,9 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 初始化Gitalk
     const gitalk = new Gitalk({
-        clientID: '0fa47e71a6a660941186',
-        clientSecret: '223cf9cbef16c36fa0acb134c67554ca64a15564',
-        repo: 'gitalk-comment',
+        clientID: 'Ov23lioponYdUWU4JRqw',
+        clientSecret: 'b40b7b1e354921b35a339b73da76bd7d52f39a24',
+        repo: 'qifad.github.io',
         owner: 'qifad',
         admin: ['qifad'],
         id: location.pathname, // 确保唯一性
