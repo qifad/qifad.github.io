@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         repo: 'gitalk-comment',
         owner: 'qifad',
         admin: ['qifad'],
-        id: location.pathname, // 确保唯一性，长度小于50
+        id: location.pathname, // 确保唯一性
         distractionFreeMode: false // 类似Facebook的无干扰模式
     });
 
