@@ -1,38 +1,19 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const copyButtons = document.querySelectorAll('.copy-button');
-    const searchInput = document.getElementById('search');
-    const posts = document.querySelectorAll('.post');
+document.addEventListener("DOMContentLoaded", function () {
+    // 点击博客卡片跳转
+    var blogCard = document.getElementById("content-card");
+    if (blogCard) {
+        blogCard.addEventListener("click", function () {
+            var page = blogCard.getAttribute("Page");
+            if (page) {
+                window.location.href = page + ".html";
+            }
+        });
+    }
 
-    // 自定义要加载的文件名
-    const contentCard = document.getElementById('content-card');
     // 复制代码块内容
+    const copyButtons = document.querySelectorAll('.copy-button');
     copyButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const codeBlock = button.previousElementSibling;
-            const range = document.createRange();
-            range.selectNodeContents(codeBlock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-            } catch (err) {
-                alert('复制失败，请手动复制。');
-            }
-            selection.removeAllRanges();
-        });
-    });
-    // 点击卡片跳转到指定页面
-    contentCard.addEventListener('click', () => {
-        const page = contentCard.getAttribute('Page');
-        window.location.href = '/Page/' + `${page}.html`;
-    });
-});
-document.addEventListener("DOMContentLoaded", () => {
-    const copyButtons = document.querySelectorAll(".copy-button");
-
-    copyButtons.forEach(button => {
-        button.addEventListener("click", () => {
             const codeBlock = button.previousElementSibling.innerText;
             navigator.clipboard.writeText(codeBlock).then(() => {
                 const originalText = button.innerText;
@@ -51,9 +32,21 @@ document.addEventListener("DOMContentLoaded", () => {
                     button.removeChild(firework);
                 }, 3000);
             }).catch(err => {
-                console.error('Failed to copy text: ', err);
+                console.error('复制失败：', err);
             });
         });
     });
-});
 
+    // 初始化Gitalk
+    const gitalk = new Gitalk({
+        clientID: '0fa47e71a6a660941186',
+        clientSecret: '223cf9cbef16c36fa0acb134c67554ca64a15564',
+        repo: 'gitalk-comment',
+        owner: 'qifad',
+        admin: ['qifad'],
+        id: location.pathname, // 确保唯一性，长度小于50
+        distractionFreeMode: false // 类似Facebook的无干扰模式
+    });
+
+    gitalk.render('gitalk-container');
+});
