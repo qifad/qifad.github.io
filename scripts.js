@@ -27,6 +27,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const page = contentCard.getAttribute('Page');
         window.location.href = '/Page/' + `${page}.html`;
     });
+    // Gitalk 初始化
+    const gitalk = new Gitalk({
+        clientID: '0fa47e71a6a660941186',  // 替换为你的 GitHub OAuth App 的 Client ID
+        clientSecret: '223cf9cbef16c36fa0acb134c67554ca64a15564',  // 替换为你的 GitHub OAuth App 的 Client Secret
+        repo: 'gitalk-comment',  // 替换为你的 GitHub 仓库名
+        owner: 'qifad',  // 替换为你的 GitHub 用户名
+        admin: ['qifad'],  // 替换为你的 GitHub 用户名
+        id: location.pathname,  // 确保每个页面的评论区是唯一的
+        distractionFreeMode: false  // 是否开启无干扰模式
+    });
+
+    gitalk.render('gitalk-container');
 });
 document.addEventListener("DOMContentLoaded", () => {
     const copyButtons = document.querySelectorAll(".copy-button");
