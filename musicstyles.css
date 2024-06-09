@@ -1,0 +1,139 @@
+#music-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease;
+    transition: all 0.5s;
+}
+
+#music-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.35);
+}
+
+.music-card button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.35s;
+}
+
+.music-card button:hover {
+    background-color: #0056b3;
+}
+
+#volume-up {
+    padding: 5px 10px;
+    background-color: #2b73c0;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.35s;
+}
+
+#volume-up:hover {
+    background-color: #1d4e83;
+}
+
+#volume-down {
+    padding: 5px 10px;
+    background-color: #2b73c0;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.35s;
+}
+
+#volume-down:hover {
+    background-color: #1d4e83;
+}
+
+#music-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 10px;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    transform: translateY(100%);
+}
+
+#music-player.active {
+    transform: translateY(0);
+}
+
+#play-pause-button,
+#prev-button,
+#next-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #fff;
+    outline: none;
+}
+
+#play-pause-button:hover,
+#prev-button:hover,
+#next-button:hover {
+    color: #FF5722;
+}
+
+#music-cover {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+#music-controls {
+    display: flex;
+    align-items: center;
+}
+
+#volume-control {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+#volume-slider {
+    width: 100px;
+    margin: 0 10px;
+}
+
+#progress-bar {
+    flex: 3;
+    height: 20px;
+    background-color: #666;
+    margin: 0 20px;
+    position: relative;
+}
+
+#progress {
+    height: 100%;
+    width: 0;
+    background-color: #fff;
+}
+
+#music-info {
+    flex: 1;
+    text-align: right - 20px;
+}
+
+#music-info span {
+    color: #fff;
+}
+
+#music-info span#current-time {
+    margin-right: 5px;
+}

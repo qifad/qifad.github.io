@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
     // 点击博客卡片跳转
-    var blogCard = document.getElementById("content-card");
-    if (blogCard) {
+    var blogCards = document.querySelectorAll(".blog-card");
+    blogCards.forEach(function (blogCard) {
         blogCard.addEventListener("click", function () {
-            var page = blogCard.getAttribute("Page");
+            var page = blogCard.getAttribute("data-page");
             if (page) {
                 window.location.href = "Page/" + page + ".html";
             }
         });
-    }
+    });
 
     // 复制代码块内容
     const copyButtons = document.querySelectorAll('.copy-button');
@@ -36,17 +36,4 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     });
-
-    // 初始化Gitalk
-    const gitalk = new Gitalk({
-        clientID: 'Ov23lioponYdUWU4JRqw',
-        clientSecret: 'b40b7b1e354921b35a339b73da76bd7d52f39a24',
-        repo: 'qifad.github.io',
-        owner: 'qifad',
-        admin: ['qifad'],
-        id: location.pathname, // 确保唯一性
-        distractionFreeMode: false // 类似Facebook的无干扰模式
-    });
-
-    gitalk.render('gitalk-container');
 });

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自制音乐</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/musicstyles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>自制音乐</h1>
+            <button onclick='location.href=("/index.html")'>=</button>
+        </header>
+        <main>
+            <div id="music-card" class="music-card" data-music-src="/Music/NI.mp3">
+                <h2>NI</h2>
+                <p>不知道取什么名字</p>
+                <button class="play-button">播放</button>
+            </div>
+            <div id="music-card" class="music-card" data-music-src="/Music/WHO.mp3">
+                <h2>WHO</h2>
+                <p>不知道取什么名字</p>
+                <button class="play-button">播放</button>
+            </div>
+            <div id="gitalk-container"></div>
+        </main>
+    </div>
+    <div id="music-player">
+        <!--<img id="music-cover" src="cover.jpg" alt="音乐封面"> -->
+        <div id="music-controls">
+            <button id="play-pause-button">播放</button>
+            <div id="volume-control">
+                <button class="volume-down" id="volume-down">-</button>
+                <input type="range" id="volume-slider" min="0" max="100" step="1" value="100">
+                <button class="volume-up" id="volume-up">+</button>
+            </div>
+            <div id="progress-bar">
+                <div id="progress"></div>
+            </div>
+            <div id="music-info">
+                <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="/scripts.js"></script>
+    <script src="/gitalk.js"></script>
+    <script src="/music.js"></script>
+    <script src="/ClickEffect.js"></script>
+</body>
+
+</html>

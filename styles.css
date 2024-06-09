@@ -21,6 +21,20 @@ header {
     align-items: center;
 }
 
+header button {
+    padding: 8px 10px;
+    background-color: #00000000;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.35s;
+}
+
+header button:hover {
+    background-color: #0000005e;
+}
+
 header h1 {
     margin: 0;
 }
