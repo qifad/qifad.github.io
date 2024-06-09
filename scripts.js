@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
         blogCard.addEventListener("click", function () {
             var page = blogCard.getAttribute("Page");
             if (page) {
-                window.location.href = page + ".html";
+                window.location.href = "Page/" + page + ".html";
             }
         });
     }
