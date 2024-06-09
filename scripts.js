@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // 初始化Gitalk
-    const gitalk = new Gitalk({
+    const gitalk = new gitalk({
         clientID: '0fa47e71a6a660941186',
         clientSecret: '223cf9cbef16c36fa0acb134c67554ca64a15564',
         repo: 'gitalk-comment',
