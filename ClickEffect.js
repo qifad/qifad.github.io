@@ -66,60 +66,64 @@ function clickEffect() {
         };
     }
     class Ball {
-        constructor(x = origin.x, y = origin.y) {
+        constructor(x = origin.x, y = origin.y, sides = randBetween(3, 20)) {
             this.x = x;
             this.y = y;
-            this.angle = Math.PI * 4 * Math.random();
-            if (longPressed == true) {
-                this.multiplier = randBetween(14 + multiplier, 15 + multiplier);
-            } else {
-                this.multiplier = randBetween(7, 12);
-            }
+            this.sides = sides; // 多边形的边数
+            this.angle = Math.PI * 2 * Math.random(); // 初始角度
+            this.multiplier = randBetween(7, 12); // 速度乘数
             this.vx = (this.multiplier + Math.random() * 0.5) * Math.cos(this.angle);
             this.vy = (this.multiplier + Math.random() * 0.5) * Math.sin(this.angle);
-            this.r = randBetween(8, 12) + 3 * Math.random();
+            this.r = randBetween(8, 12) + 3 * Math.random(); // 半径
             this.color = colours[Math.floor(Math.random() * colours.length)];
         }
+
         update() {
-            this.x += this.vx - normal.x;
-            this.y += this.vy - normal.y;
-            normal.x = -2 / window.innerWidth * Math.sin(this.angle);
-            normal.y = -2 / window.innerHeight * Math.cos(this.angle);
+            // 更新位置和速度
+            this.x += this.vx;
+            this.y += this.vy;
             this.r -= 0.3;
             this.vx *= 0.9;
             this.vy *= 0.9;
         }
-    }
 
-    function pushBalls(count = 1, x = origin.x, y = origin.y) {
-        for (let i = 0; i < count; i++) {
-            balls.push(new Ball(x, y));
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.moveTo(this.x, this.y);
+            for (let i = 0; i < this.sides; i++) {
+                let radian = this.angle + (Math.PI * 2 / this.sides) * i;
+                let pointX = this.x + this.r * Math.cos(radian);
+                let pointY = this.y + this.r * Math.sin(radian);
+                ctx.lineTo(pointX, pointY);
+            }
+            ctx.closePath();
+            ctx.fill();
         }
-    }
-
-    function randBetween(min, max) {
-        return Math.floor(Math.random() * max) + min;
     }
 
     function loop() {
-        ctx.fillStyle = "rgba(255, 255, 255, 0)";
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // 清除画布
         for (let i = 0; i < balls.length; i++) {
             let b = balls[i];
             if (b.r < 0) continue;
-            ctx.fillStyle = b.color;
-            ctx.beginPath();
-            ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2, false);
-            ctx.fill();
-            b.update();
-        }
-        if (longPressed == true) {
-            multiplier += 0.2;
-        } else if (!longPressed && multiplier >= 0) {
-            multiplier -= 0.4;
+            b.update(); // 更新球体状态
+            b.draw(); // 绘制球体
         }
         removeBall();
         requestAnimationFrame(loop);
+    }
+
+    // pushBalls函数也需要修改，以传递sides参数
+    function pushBalls(count = 1, x = origin.x, y = origin.y) {
+        for (let i = 0; i < count; i++) {
+            balls.push(new Ball(x, y, randBetween(3, 20)));
+        }
+    }
+
+
+    function randBetween(min, max) {
+        return Math.floor(Math.random() * max) + min;
     }
 
     function removeBall() {
