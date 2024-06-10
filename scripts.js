@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const loadingSpinner = document.getElementById("loading-spinner");
     // 点击博客卡片跳转
     var blogCards = document.querySelectorAll(".blog-card");
     blogCards.forEach(function (blogCard) {
@@ -36,4 +37,11 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     });
+    // 隐藏加载动画
+    function hideLoadingSpinner() {
+        loadingSpinner.classList.add('hidden');
+    }
+
+    // 页面加载完成后隐藏加载动画
+    window.addEventListener('load', hideLoadingSpinner);
 });

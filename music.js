@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalTimeSpan = document.getElementById("total-time");
     const musicPlayer = document.getElementById("music-player");
     const playModeButton = document.getElementById("play-mode-button");
-    const loadingSpinner = document.getElementById("loading-spinner");
 
     let audio = new Audio();
     let isPlaying = false;
@@ -22,14 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { src: '/Music/NI.mp3', title: 'NI' },
         { src: '/Music/WHO.mp3', title: 'WHO' }
     ];
-
-    // 隐藏加载动画
-    function hideLoadingSpinner() {
-        loadingSpinner.classList.add('hidden');
-    }
-
-    // 页面加载完成后隐藏加载动画
-    window.addEventListener('load', hideLoadingSpinner);
 
     playPauseButton.addEventListener("click", togglePlayPause);
 
@@ -98,15 +89,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    progressBar.addEventListener("click", (e) => {
-        const rect = progressBar.getBoundingClientRect();
-        const offsetX = e.clientX - rect.left;
-        const newTime = (offsetX / progressBar.offsetWidth) * audio.duration;
-        audio.currentTime = newTime;
-    });
-
-    progressBar.addEventListener("mousedown", () => {
+    progressBar.addEventListener("mousedown", (e) => {
         isDragging = true;
+        updateProgressBar(e);
     });
 
     document.addEventListener("mouseup", () => {
@@ -117,12 +102,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.addEventListener("mousemove", (e) => {
         if (isDragging) {
-            const rect = progressBar.getBoundingClientRect();
-            const offsetX = e.clientX - rect.left;
-            const newTime = (offsetX / progressBar.offsetWidth) * audio.duration;
-            audio.currentTime = newTime;
+            updateProgressBar(e);
         }
     });
+
+    progressBar.addEventListener("click", updateProgressBar);
 
     playModeButton.addEventListener("click", () => {
         switch (playMode) {
@@ -194,5 +178,15 @@ document.addEventListener("DOMContentLoaded", function () {
         const minutes = Math.floor(seconds / 60);
         const remainingSeconds = Math.floor(seconds % 60);
         return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+    }
+
+    function updateProgressBar(e) {
+        const rect = progressBar.getBoundingClientRect();
+        const offsetX = e.clientX - rect.left;
+        const percentage = offsetX / rect.width;
+        const newTime = percentage * audio.duration;
+        audio.currentTime = newTime;
+        progress.style.width = percentage * 100 + "%";
+        currentTimeSpan.textContent = formatTime(audio.currentTime);
     }
 });
