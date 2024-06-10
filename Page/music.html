@@ -11,18 +11,20 @@
 </head>
 
 <body>
+    <div id="loading-spinner" class="spinner"></div>
+
     <div class="container">
         <header>
             <h1>自制音乐</h1>
             <button onclick='location.href=("/index.html")'>=</button>
         </header>
         <main>
-            <div id="music-card" class="music-card" data-music-src="/Music/NI.mp3">
+            <div class="music-card" data-music-src="/Music/NI.mp3">
                 <h2>NI</h2>
                 <p>不知道取什么名字</p>
                 <button class="play-button">播放</button>
             </div>
-            <div id="music-card" class="music-card" data-music-src="/Music/WHO.mp3">
+            <div class="music-card" data-music-src="/Music/WHO.mp3">
                 <h2>WHO</h2>
                 <p>不知道取什么名字</p>
                 <button class="play-button">播放</button>
@@ -31,7 +33,6 @@
         </main>
     </div>
     <div id="music-player">
-        <!--<img id="music-cover" src="cover.jpg" alt="音乐封面"> -->
         <div id="music-controls">
             <button id="play-pause-button">播放</button>
             <div id="volume-control">
@@ -43,8 +44,9 @@
                 <div id="progress"></div>
             </div>
             <div id="music-info">
-                <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
+                <span id="current-time" style="cursor: pointer;">0:00</span> / <span id="total-time">0:00</span>
             </div>
+            <button id="play-mode-button">单曲循环</button>
         </div>
     </div>
 
