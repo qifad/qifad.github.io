@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发推功能</title>
+    <style>
+        /* 样式代码 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            border-radius: 8px;
+            width: 300px;
+        }
+        .modal input, .modal textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .modal button {
+            padding: 10px 20px;
+            background-color: #1da1f2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+    <!-- 引入EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // 初始化EmailJS
+        (function() {
+            emailjs.init('YOUR_USER_ID'); // 替换为你的User ID
+        })();
+    </script>
+</head>
+<body>
+    <!-- 发推按钮 -->
+    <button id="tweetButton">发推</button>
+
+    <!-- 弹出框 -->
+    <div class="overlay" id="overlay"></div>
+    <div class="modal" id="modal">
+        <input type="text" id="title" placeholder="输入标题">
+        <textarea id="content" placeholder="输入内容"></textarea>
+        <button id="sendButton">发送</button>
+    </div>
+
+    <script>
+        // JavaScript代码
+        const tweetButton = document.getElementById('tweetButton');
+        const overlay = document.getElementById('overlay');
+        const modal = document.getElementById('modal');
+        const sendButton = document.getElementById('sendButton');
+        const titleInput = document.getElementById('title');
+        const contentInput = document.getElementById('content');
+
+        // 打开弹出框
+        tweetButton.addEventListener('click', () => {
+            overlay.style.display = 'block';
+            modal.style.display = 'block';
+        });
+
+        // 关闭弹出框
+        overlay.addEventListener('click', () => {
+            overlay.style.display = 'none';
+            modal.style.display = 'none';
+        });
+
+        // 发送功能
+        sendButton.addEventListener('click', () => {
+            const title = titleInput.value;
+            const content = contentInput.value;
+
+            if (title && content) {
+                // 使用EmailJS发送邮件
+                emailjs.send('fucktest', 'template_z2c6bj9', {
+                    title: title,
+                    content: content
+                }).then(() => {
+                    alert('邮件发送成功！');
+                    titleInput.value = '';
+                    contentInput.value = '';
+                    overlay.style.display = 'none';
+                    modal.style.display = 'none';
+                }, (error) => {
+                    alert('邮件发送失败，请重试。');
+                    console.error('发送失败:', error);
+                });
+            } else {
+                alert('请填写标题和内容！');
+            }
+        });
+    </script>
+</body>
+</html>
